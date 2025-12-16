@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>facefriend | Login</title>
+    <meta name="description" content="connect with different people"> 
+    <meta name="keywords" content="facefriend, friend"> <!--keywords for search engine on browser -->
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../javascript/script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap 5 JS (bundle with Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- header -->
+
+    <div class="container p-3 bg-light flex-column mt-5 d-flex justify-content-around border rounded"  id="container">
+        <div class="">
+            <h3 class="fs-3 d-none d-sm-block">facefriends</h3>
+            <p class="d-none d-sm-block">Connect with anyone you feel to connect</p>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h2 class="text-center">Login</h2>
+                    <form action=""  id="login1">
+                        <div class="input-group ">
+                            <span class="input-group-text mb-3">@</span>
+                            <input type="text" name="" class="form-control mb-3" id="username" placeholder="Username">
+                        </div>
+                        <div class="input-group">
+                            <input type="password" name="" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <p id="message"></p>
+                        <div class="d-flex justify-content-around">
+                            <button type="submit" class="btn btn-primary mt-4">Login</button>
+                            <button class="btn btn-success mt-4" id="createAccount">Create account</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-white text-center py-3">
+        <p class="mb-0">facefriends &copy; 2025</p>
+    </footer>
+</body>
+</html>
+
+<!-- javascript code for user credential -->
+
+<script>
+    document.getElementById('login1').addEventListener('submit', function(event){
+        event.preventDefault();
+
+        try {
+            // user inputs
+
+        const usernameInput = document.getElementById('username').value;
+        const passwordInput = document.getElementById('password').value;
+        const message = document.getElementById('message');
+
+        // simple user credential object
+
+        const userLogin = {
+            username: 'admin',
+            password: '1234'
+        }
+
+        // session for storing userCredential
+        const storeSecurityLogin = sessionStorage.setItem('Login', JSON.stringify(userLogin));
+        const getUserLogin = JSON.parse(sessionStorage.getItem('Login'));
+
+        if (usernameInput === getUserLogin.username && passwordInput === getUserLogin.password) {
+            window.location.assign('home.html')
+        } else {
+            message.innerHTML = `<p class="alert alert-danger mt-2">wrong</p>`
+        }
+        } catch (error) {
+            console.log('something went wrong' + error);
+            
+        }
+
+        
+        
+    })
+</script>
