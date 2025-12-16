@@ -77,7 +77,7 @@
         const getUserLogin = JSON.parse(sessionStorage.getItem('Login'));
 
         if (usernameInput === getUserLogin.username && passwordInput === getUserLogin.password) {
-            window.location.assign('home.html')
+            window.location.assign('index.html')
         } else {
             message.innerHTML = `<p class="alert alert-danger mt-2">wrong</p>`
         }
@@ -91,3 +91,4 @@
     })
 
 </script>
+
