@@ -43,7 +43,7 @@ document.getElementById('createForm').addEventListener('submit',function(event){
         
         // redirect user home page
 
-        window.location.assign('home.html');
+        window.location.assign('index.html');
         
     } catch (error) {
         alert(`system got error on ${error.name} ${error.message}`);
@@ -61,6 +61,7 @@ document.getElementById('captionPost').addEventListener('input', function(){
     }
     
 })
+
 
 
 
