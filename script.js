@@ -40,16 +40,27 @@ document.getElementById('createForm').addEventListener('submit',function(event){
 
         const postStorage = localStorage.setItem('post', JSON.stringify(postData));
 
-        // output data
+        
+        // redirect user home page
 
-        const showPosts = JSON.parse(localStorage.getItem('post'));
-        console.log(showPosts.captionPost);
-
-        userCaption.value = '';
+        window.location.assign('home.html');
         
     } catch (error) {
         alert(`system got error on ${error.name} ${error.message}`);
     }
+});
+
+// lets enable the button when user start to input
+
+document.getElementById('captionPost').addEventListener('input', function(){
+    try {
+        const getButton = document.getElementById('post-btn');
+        getButton.disabled = false;
+    } catch (error) {
+        alert(`system got error on ${error.name} ${error.message}`);
+    }
+    
 })
+
 
 
