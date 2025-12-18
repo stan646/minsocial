@@ -31,4 +31,13 @@
     .body-container{
         margin-top: 140px !important;
     }
+
+     .my-input::placeholder{
+        font-size: 20px;
+    }
+
+    .text-area{
+        font-size: 28px !important;
+    }
+
 }
