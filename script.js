@@ -44,9 +44,12 @@ document.getElementById('createForm').addEventListener('submit',function(event){
 
         const showPosts = JSON.parse(localStorage.getItem('post'));
         console.log(showPosts.captionPost);
+
+        userCaption.value = '';
         
     } catch (error) {
         alert(`system got error on ${error.name} ${error.message}`);
     }
 })
+
 
