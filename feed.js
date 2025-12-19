@@ -8,3 +8,14 @@ if (showPost.time <= 12) {
 } else {
     postTime.innerHTML = `${showPost.time} PM`
 }
+
+
+document.getElementById('like-btn').addEventListener('click', function(){
+    const showLikes = document.getElementById('likes');
+    showPost.likes++;
+    if (showPost.likes >= 1000) {
+        showLikes.innerHTML = `${showPost.likes}k`;
+    } else {
+        showLikes.innerHTML = showPost.likes;
+    }
+});
