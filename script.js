@@ -1,12 +1,18 @@
 // object for holding user information post
 
-const postData = {
-    id: '',
-    captionPost: '',
-    author: '',
-    time: '',
-    comments: '',
-    likes: '',
+const post = {
+    postData:{
+        id: '',
+        captionPost: '',
+        author: '',
+        comments: 0,
+        likes: 0,
+    },
+    postDateInfo: {
+        currentTime: new Date(),
+        time: '',
+    }
+    
 }
 
 // form handling
@@ -17,33 +23,30 @@ document.getElementById('createForm').addEventListener('submit',function(event){
     try {
         // get user input for posting
 
-        const userCaption = document.getElementById('captionPost').value;
+        const userCaption = document.getElementById('captionPost');
+        const postCaption = userCaption.value;
         const mediaPost = document.getElementById('fileUpload');
 
-        // date
-        const postDate = new Date();
-        let month = postDate.getMonth();
-        let hour = postDate.getHours();
-        let minutes = postDate.getMinutes();
-        let second = postDate.getSeconds();
-        let Time = `posted at ${hour}:${minutes}`;
-        
-       
+        let hour = post.postDateInfo.currentTime.getHours();
+        let min = post.postDateInfo.currentTime.getMinutes();
+        let month = post.postDateInfo.currentTime.getMonth();
+        let timePost = (hour < 12) ? `${hour} : ${min} AM` : `${hour} : ${min} PM`;
         
 
+          
         // assign objects key to values
 
-        postData.captionPost = userCaption;
-        postData.time = Time;
-
+        post.postData.captionPost = postCaption;
+        post.postDateInfo.time = timePost;
+        post.postData.likes;
         // lets create a localstorage for storing userPost
 
-        const postStorage = localStorage.setItem('post', JSON.stringify(postData));
+        const postStorage = localStorage.setItem('userPost', JSON.stringify(post));
 
-        
         // redirect user home page
 
-        window.location.assign('index.html');
+        window.location.assign('home.html');
+       
         
     } catch (error) {
         alert(`system got error on ${error.name} ${error.message}`);
@@ -61,6 +64,7 @@ document.getElementById('captionPost').addEventListener('input', function(){
     }
     
 })
+
 
 
 
